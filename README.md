@@ -20,7 +20,6 @@ RegisterNumber: 212225040232
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeRegressor, plot_tree
 from sklearn.metrics import (
@@ -28,32 +27,20 @@ from sklearn.metrics import (
     mean_absolute_error,
     r2_score
 )
-
-# Step 2: Create Dataset
 data = {
     "Experience": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
     "Age": [22, 24, 26, 28, 30, 32, 34, 36, 38, 40],
     "Salary": [25000, 30000, 35000, 45000, 50000,
                60000, 65000, 75000, 85000, 95000]
 }
-
-# Create DataFrame
 df = pd.DataFrame(data)
-
-# Display Dataset
 print("Dataset:\n")
 print(df)
-
-# Step 3: Split Features and Target
 X = df[["Experience", "Age"]]
 y = df["Salary"]
-
-# Step 4: Train-Test Split
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42
 )
-
-# Step 5: Train Decision Tree Regressor
 model = DecisionTreeRegressor(
     criterion='squared_error',
     max_depth=4,
@@ -61,60 +48,38 @@ model = DecisionTreeRegressor(
 )
 
 model.fit(X_train, y_train)
-
-# Step 6: Predictions
 y_pred = model.predict(X_test)
-
-# Step 7: Model Evaluation
 print("\nModel Evaluation:")
-
 print("Mean Squared Error:")
 print(mean_squared_error(y_test, y_pred))
-
 print("\nMean Absolute Error:")
 print(mean_absolute_error(y_test, y_pred))
 
 print("\nR2 Score:")
 print(r2_score(y_test, y_pred))
-
-# Step 8: Feature Importance
 importance = pd.DataFrame({
     "Feature": X.columns,
     "Importance": model.feature_importances_
 })
-
 print("\nFeature Importance:")
 print(importance)
-
-# Step 9: Visualize Decision Tree
 plt.figure(figsize=(14,8))
-
 plot_tree(
     model,
     feature_names=X.columns,
     filled=True
 )
-
 plt.title("Decision Tree Regressor for Salary Prediction")
 plt.show()
-
-# Step 10: Visualization of Actual vs Predicted
 plt.figure(figsize=(8,6))
-
 plt.scatter(y_test, y_pred)
-
 plt.xlabel("Actual Salary")
 plt.ylabel("Predicted Salary")
 plt.title("Actual Salary vs Predicted Salary")
 plt.grid(True)
-
 plt.show()
-
-# Step 11: Custom Prediction
 employee_data = [[5, 30]]
-
 predicted_salary = model.predict(employee_data)
-
 print("\nPredicted Salary for Employee:")
 print(f"Predicted Salary = {predicted_salary[0]:.2f}")
 ```
