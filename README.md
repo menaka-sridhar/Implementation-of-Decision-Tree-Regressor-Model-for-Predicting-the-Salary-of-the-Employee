@@ -1,5 +1,4 @@
 # Implementation-of-Decision-Tree-Regressor-Model-for-Predicting-the-Salary-of-the-Employee
-
 ## AIM:
 To write a program to implement the Decision Tree Regressor Model for Predicting the Salary of the Employee.
 ## Equipments Required:
@@ -46,7 +45,6 @@ model = DecisionTreeRegressor(
     max_depth=4,
     random_state=42
 )
-
 model.fit(X_train, y_train)
 y_pred = model.predict(X_test)
 print("\nModel Evaluation:")
@@ -54,7 +52,6 @@ print("Mean Squared Error:")
 print(mean_squared_error(y_test, y_pred))
 print("\nMean Absolute Error:")
 print(mean_absolute_error(y_test, y_pred))
-
 print("\nR2 Score:")
 print(r2_score(y_test, y_pred))
 importance = pd.DataFrame({
@@ -84,7 +81,6 @@ print("\nPredicted Salary for Employee:")
 print(f"Predicted Salary = {predicted_salary[0]:.2f}")
 ```
 ## Output:
-![Decision Tree Regressor Model for Predicting the Salary of the Employee](sam.png)
 <img width="842" height="366" alt="image" src="https://github.com/user-attachments/assets/5e9426ca-0328-421c-808a-9cb29f5a620b" />
 <img width="827" height="472" alt="image" src="https://github.com/user-attachments/assets/da0cfb0d-8fb4-4097-a3b0-c2aeef7aa19a" />
 <img width="657" height="423" alt="image" src="https://github.com/user-attachments/assets/7a64edae-5af2-4272-a085-31d880d163ad" />
